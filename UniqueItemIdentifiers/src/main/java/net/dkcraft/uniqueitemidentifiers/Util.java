@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -59,18 +60,18 @@ public class Util {
 		targetPlayer.getInventory().addItem(itemStack);
 	}
 	
-	public void listCustomItems(Player player) {
+	public void listCustomItems(CommandSender sender) {
 		
-		player.sendMessage(ChatColor.GREEN + "Available UII Custom Items:");
+		sender.sendMessage(ChatColor.GREEN + "Available UII Custom Items:");
 		
 		for (String itemName : plugin.items.keySet()) {
 			Item item = plugin.items.get(itemName);
-			player.sendMessage(ChatColor.GREEN + " " + itemName + ":");
-			player.sendMessage(ChatColor.GREEN + "  Material: " + ChatColor.WHITE + item.getMaterial());
-			player.sendMessage(ChatColor.GREEN + "  Name: " + ChatColor.translateAlternateColorCodes('&', item.getName()));
-			player.sendMessage(ChatColor.GREEN + "  Lore: " + ChatColor.WHITE + "[" + ChatColor.translateAlternateColorCodes('&', String.join(", ", item.getLore())) + ChatColor.WHITE + "]");
-			player.sendMessage(ChatColor.GREEN + "  Enchantments: " + ChatColor.WHITE + item.getEnchantments());
-			player.sendMessage(ChatColor.GREEN + "  Count: " + ChatColor.WHITE + item.getCount());
+			sender.sendMessage(ChatColor.GREEN + " " + itemName + ":");
+			sender.sendMessage(ChatColor.GREEN + "  Material: " + ChatColor.WHITE + item.getMaterial());
+			sender.sendMessage(ChatColor.GREEN + "  Name: " + ChatColor.translateAlternateColorCodes('&', item.getName()));
+			sender.sendMessage(ChatColor.GREEN + "  Lore: " + ChatColor.WHITE + "[" + ChatColor.translateAlternateColorCodes('&', String.join(", ", item.getLore())) + ChatColor.WHITE + "]");
+			sender.sendMessage(ChatColor.GREEN + "  Enchantments: " + ChatColor.WHITE + item.getEnchantments());
+			sender.sendMessage(ChatColor.GREEN + "  Count: " + ChatColor.WHITE + item.getCount());
 		}
 	}
 }

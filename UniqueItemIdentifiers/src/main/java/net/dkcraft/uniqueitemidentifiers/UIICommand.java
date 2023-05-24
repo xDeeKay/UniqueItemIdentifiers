@@ -20,16 +20,14 @@ public class UIICommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (command.getName().equalsIgnoreCase("uii")) {
 
-			Player player = (Player) sender;
-
 			if (args.length == 0) {
-				player.sendMessage(ChatColor.GREEN + "Available UII Commands:");
-				player.sendMessage(ChatColor.GREEN + " /uii give <player> <item> <amount>");
-				player.sendMessage(ChatColor.GREEN + " /uii list");
+				sender.sendMessage(ChatColor.GREEN + "Available UII Commands:");
+				sender.sendMessage(ChatColor.GREEN + " /uii give <player> <item> <amount>");
+				sender.sendMessage(ChatColor.GREEN + " /uii list");
 
 			} else if (args.length == 1) {
 				if (args[0].equalsIgnoreCase("list")) {
-					util.listCustomItems(player);
+					util.listCustomItems(sender);
 				}
 				
 			} else if (args.length == 4) {
@@ -44,13 +42,13 @@ public class UIICommand implements CommandExecutor {
 
 							int amount = Integer.parseInt(args[3]);
 							util.giveCustomItem(targetPlayer, itemName, amount);
-							player.sendMessage(ChatColor.GREEN + "Gave " + ChatColor.WHITE + amount + ChatColor.GREEN + " of " + ChatColor.WHITE + itemName + ChatColor.GREEN + " to player " + ChatColor.WHITE + target);
+							sender.sendMessage(ChatColor.GREEN + "Gave " + ChatColor.WHITE + amount + ChatColor.GREEN + " of " + ChatColor.WHITE + itemName + ChatColor.GREEN + " to player " + ChatColor.WHITE + target);
 
 						} else {
-							player.sendMessage(ChatColor.RED + itemName + " does not exist.");
+							sender.sendMessage(ChatColor.RED + itemName + " does not exist.");
 						}
 					} else {
-						player.sendMessage(ChatColor.RED + target + " is not online.");
+						sender.sendMessage(ChatColor.RED + target + " is not online.");
 					}
 				}
 			}
