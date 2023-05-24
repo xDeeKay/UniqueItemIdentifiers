@@ -7,7 +7,7 @@
 	<groupId>net.dkcraft.uniqueitemidentifiers</groupId>
 	<artifactId>UniqueItemIdentifiers</artifactId>
 	<packaging>jar</packaging>
-	<version>1.2</version>
+	<version>1.3</version>
 	<name>UniqueItemIdentifiers</name>
 	<description>Create custom items with unique identifiers.</description>
 	
@@ -24,6 +24,13 @@
 			<artifactId>spigot-api</artifactId>
 			<version>1.19.4-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>cmi.api</groupId>
+			<artifactId>CMI-API</artifactId>
+			<version>9.5.0.8</version>
+			<scope>system</scope>
+			<systemPath>C:\Users\dk_61\Downloads\CMI-API9.5.0.8.jar</systemPath>
 		</dependency>
 	</dependencies>
 	
