@@ -9,11 +9,14 @@ import org.bukkit.entity.Player;
 public class UIICommand implements CommandExecutor {
 
 	public Main plugin;
+	
+	public Config config;
 
 	public Util util;
 
 	public UIICommand(Main plugin) {
 		this.plugin = plugin;
+		this.config = this.plugin.config;
 		this.util = this.plugin.util;
 	}
 
@@ -22,12 +25,19 @@ public class UIICommand implements CommandExecutor {
 
 			if (args.length == 0) {
 				sender.sendMessage(ChatColor.GREEN + "Available UII Commands:");
-				sender.sendMessage(ChatColor.GREEN + " /uii give <player> <item> <amount>");
-				sender.sendMessage(ChatColor.GREEN + " /uii list");
+				sender.sendMessage(ChatColor.GREEN + " /uii give <player> <item> <amount> - Give player a custom item");
+				sender.sendMessage(ChatColor.GREEN + " /uii list - List available custom items");
+				sender.sendMessage(ChatColor.GREEN + " /uii reload - Reload config");
 
 			} else if (args.length == 1) {
+				
 				if (args[0].equalsIgnoreCase("list")) {
 					util.listCustomItems(sender);
+				}
+				
+				if (args[0].equalsIgnoreCase("reload")) {
+					config.loadItems();
+					sender.sendMessage(ChatColor.GREEN + "Reloaded config.");
 				}
 				
 			} else if (args.length == 4) {

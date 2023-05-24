@@ -13,7 +13,9 @@ public class Config {
 	}
 
 	public void loadItems() {
-
+		
+		plugin.reloadConfig();
+		
 		plugin.getConfig().options().copyDefaults(true);
 		plugin.saveDefaultConfig();
 
@@ -38,7 +40,6 @@ public class Config {
 					plugin.getLogger().log(Level.INFO, " Lore: " + lore);
 					plugin.getLogger().log(Level.INFO, " Enchantments: " + enchantments);
 					plugin.getLogger().log(Level.INFO, " Count: " + count);
-
 				}
 			}
 		}

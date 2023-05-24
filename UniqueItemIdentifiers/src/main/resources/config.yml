@@ -1,9 +1,10 @@
 items:
   test_pickaxe:
     material: diamond_pickaxe
-    name: "&6Test pickaxe"
+    name: '&6Test pickaxe'
     lore:
-      - "&8(&e#&6%id%&8)"
+    - ''
+    - '&8(&e#&6%id%&8)'
     enchantments:
-      - "DIG_SPEED:5"
+    - 'DIG_SPEED:5'
     count: 1

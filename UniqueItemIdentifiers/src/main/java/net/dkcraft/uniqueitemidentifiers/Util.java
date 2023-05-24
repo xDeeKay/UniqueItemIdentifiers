@@ -69,7 +69,7 @@ public class Util {
 			sender.sendMessage(ChatColor.GREEN + " " + itemName + ":");
 			sender.sendMessage(ChatColor.GREEN + "  Material: " + ChatColor.WHITE + item.getMaterial());
 			sender.sendMessage(ChatColor.GREEN + "  Name: " + ChatColor.translateAlternateColorCodes('&', item.getName()));
-			sender.sendMessage(ChatColor.GREEN + "  Lore: " + ChatColor.WHITE + "[" + ChatColor.translateAlternateColorCodes('&', String.join(", ", item.getLore())) + ChatColor.WHITE + "]");
+			sender.sendMessage(ChatColor.GREEN + "  Lore: " + ChatColor.WHITE + "[" + ChatColor.translateAlternateColorCodes('&', String.join(ChatColor.WHITE + ", ", item.getLore())) + ChatColor.WHITE + "]");
 			sender.sendMessage(ChatColor.GREEN + "  Enchantments: " + ChatColor.WHITE + item.getEnchantments());
 			sender.sendMessage(ChatColor.GREEN + "  Count: " + ChatColor.WHITE + item.getCount());
 		}
