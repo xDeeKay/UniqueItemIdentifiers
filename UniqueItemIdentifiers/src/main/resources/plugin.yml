@@ -1,0 +1,12 @@
+name: UniqueItemIdentifiers
+version: '1.0'
+description: Create custom items with unique identifiers.
+author: xDeeKay
+main: net.dkcraft.uniqueitemidentifiers.Main
+api-version: 1.13
+commands:
+    uii:
+        description: Create, delete, and give custom items.
+        usage: /uii
+        permission: uii.admin
+        permission-message: You do not have permission to do that.
