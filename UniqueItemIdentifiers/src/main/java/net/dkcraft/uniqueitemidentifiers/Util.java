@@ -34,16 +34,14 @@ public class Util {
 		ItemStack itemStack = new ItemStack(Material.valueOf(item.getMaterial().toUpperCase()), amount);
 		ItemMeta meta = itemStack.getItemMeta();
 
-		//meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', item.getName().replace("%id%", String.valueOf(item.getCount()))));
-		meta.setDisplayName(translateHexColorCodes("&#", "", item.getName().replace("%id%", String.valueOf(item.getCount()))));
+		meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', translateHexColorCodes("&#", "", item.getName().replace("%id%", String.valueOf(item.getCount())))));
 
 		List<String> loreList = new ArrayList<String>();
 		for (String loreLine : item.getLore()) {
 			if (loreLine.contains("%id%")) {
 				loreLine = loreLine.replace("%id%", String.valueOf(count));
 			}
-			//loreList.add(ChatColor.translateAlternateColorCodes('&', loreLine));
-			loreList.add(translateHexColorCodes("&#", "", loreLine));
+			loreList.add(ChatColor.translateAlternateColorCodes('&', translateHexColorCodes("&#", "", loreLine)));
 		}
 		meta.setLore(loreList);
 
@@ -73,24 +71,25 @@ public class Util {
 			Item item = plugin.items.get(itemName);
 			sender.sendMessage(ChatColor.GREEN + " " + itemName + ":");
 			sender.sendMessage(ChatColor.GREEN + "  Material: " + ChatColor.WHITE + item.getMaterial());
-			sender.sendMessage(ChatColor.GREEN + "  Name: " + translateHexColorCodes("&#", "", item.getName()));
-			sender.sendMessage(ChatColor.GREEN + "  Lore: " + ChatColor.WHITE + "[" + translateHexColorCodes("&#", "", String.join(ChatColor.WHITE + ", ", item.getLore())) + ChatColor.WHITE + "]");
+			sender.sendMessage(ChatColor.GREEN + "  Name: " + ChatColor.translateAlternateColorCodes('&', translateHexColorCodes("&#", "", item.getName())));
+			sender.sendMessage(ChatColor.GREEN + "  Lore: " + ChatColor.WHITE + "[" + ChatColor.translateAlternateColorCodes('&', translateHexColorCodes("&#", "", String.join(ChatColor.WHITE + ", ", item.getLore())) + ChatColor.WHITE + "]"));
 			sender.sendMessage(ChatColor.GREEN + "  Enchantments: " + ChatColor.WHITE + item.getEnchantments());
 			sender.sendMessage(ChatColor.GREEN + "  Count: " + ChatColor.WHITE + item.getCount());
 		}
 	}
 	
 	public String translateHexColorCodes(String startTag, String endTag, String message) {
+		
 		final Pattern hexPattern = Pattern.compile(startTag + "([A-Fa-f0-9]{6})" + endTag);
 		Matcher matcher = hexPattern.matcher(message);
 		StringBuffer buffer = new StringBuffer(message.length() + 4 * 8);
+		
 		while (matcher.find()) {
 			String group = matcher.group(1);
 			matcher.appendReplacement(buffer, ChatColor.COLOR_CHAR + "x"
 					+ ChatColor.COLOR_CHAR + group.charAt(0) + ChatColor.COLOR_CHAR + group.charAt(1)
 					+ ChatColor.COLOR_CHAR + group.charAt(2) + ChatColor.COLOR_CHAR + group.charAt(3)
-					+ ChatColor.COLOR_CHAR + group.charAt(4) + ChatColor.COLOR_CHAR + group.charAt(5)
-					);
+					+ ChatColor.COLOR_CHAR + group.charAt(4) + ChatColor.COLOR_CHAR + group.charAt(5));
 		}
 		return matcher.appendTail(buffer).toString();
 	}

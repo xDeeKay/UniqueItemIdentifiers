@@ -30,11 +30,9 @@ public class UIICommand implements CommandExecutor {
 				sender.sendMessage(ChatColor.GREEN + " /uii reload - Reload config");
 
 			} else if (args.length == 1) {
-				
 				if (args[0].equalsIgnoreCase("list")) {
 					util.listCustomItems(sender);
 				}
-				
 				if (args[0].equalsIgnoreCase("reload")) {
 					config.loadItems();
 					sender.sendMessage(ChatColor.GREEN + "Reloaded config.");
